@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block style %} {% endblock %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../static/css/base.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header-nav-bar">
+      <div style="left: 5%; position: fixed">
+        <h1 style="font-size :26px;font-weight: 600;">{% block title %} {% endblock %}</h1>
+      </div>
+      <div style="right: 5%; position: fixed;display: flex;gap:12px;">
+        <a href="{% url 'notification' %}"><img src="../../static/images/notification.svg" alt="" /></a>
+        <a href="{% url 'profile' %}"
+          ><img src="../static/images/profile icon.svg" alt=""
+        /></a>
+      </div>
+    </div>
+    <div class="body-content" style="padding-top: 10px;">{% block content %} {% endblock %}</div>
+    <div
+      style="
+        position: fixed;
+        bottom: 2.5%;
+        width: fit-content;
+        left: auto;
+        right: auto;
+      "
+    >
+      <div class="navigation-bar">
+        <a href="{% url 'dashboard' %}"
+          ><img class="nav-images" src="../static/images/dashboard.svg" alt=""
+        /></a>
+        <a href="{% url 'booking' %}"
+          ><img class="nav-images" src="../static/images/booking.svg" alt=""
+        /></a>
+
+        <a href="{% url 'rewards' %}"
+          ><img class="nav-images" src="../static/images/rewards.svg" alt=""
+        /></a>
+        <a href="{% url 'track' %}"
+          ><img class="nav-images" src="../static/images/track.svg" alt=""
+        /></a>
+      </div>
+    </div>
+    {% block script %}
+    {% endblock %}
+  </body>
+</html>

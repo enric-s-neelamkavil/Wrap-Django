@@ -67,3 +67,18 @@ def signin(request):
             return render(request,'signin.html',context=data)
     else:
         return render(request, 'signin.html')
+    
+def user_logout(request):
+    if 'uname' in request.session:
+        del request.session['uname']
+
+    return render(request,'loader.html')
+
+#User Home Page
+def dashboard(request):
+    if 'uname' in request.session:
+        data = {'name':request.session.get('uname')}
+        return render(request,'users/dashboard.html',context=data)
+    else:
+        data = {'status':'You need to login first'}
+        return render(request,'sigin.html',context=data)
