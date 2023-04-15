@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block style %}
+<link rel="stylesheet" href="../../static/css/book.css" />
+{% endblock %} {% block title %} Booking{% endblock %} {% block content %}
+<div class="booking">
+  <h2 class="heading-bookings">Your Schedule</h2>
+
+  <!-- <div class="your-schedule">
+    {% with bookings|last as last %}
+    <div style="display: flex; gap: 25px">
+      <div class="your-schedule-left">
+        <h4>{{ last.month}}</h4>
+        <h3>{{ last.date|slice:2}}</h3>
+      </div>
+      <div class="your-schedule-right">
+        <h3>{{last.wastetype}}</h3>
+        <p>Status :{{last.booking_status}}</p>
+      </div>
+    </div>
+    {% endwith %}
+  </div> -->
+  <div class="your-schedule">
+    {% for booking in bookings %} {% if booking.count == 0 %}
+    <div></div>
+
+    {% endif %} {% if booking.booking_status == "Booked" %}
+    <div
+      style="
+        height: fit-content;
+        display: flex;
+        background: #fcfcfc;
+        box-shadow: -2px 4px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 22px;
+        padding: 20px 20px;
+        justify-content: left;
+        width: 70%;
+        gap: 25px;
+        min-width: 280px;
+      "
+    >
+      <div class="your-schedule-left">
+        <h4>{{ booking.month}}</h4>
+        <h3>{{ booking.date1}}</h3>
+      </div>
+      <div class="your-schedule-right">
+        <h3>{{booking.wastetype}}</h3>
+        <p>Status :{{booking.booking_status}}</p>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+
+  <div class="past-booking">
+    <h2 class="heading-bookings">Past Bookings</h2>
+    <table class="">
+      <thead>
+        <tr class="past-booking-table-head">
+          <th class="pl-4">Type</th>
+          <th>Date</th>
+          <th class="pr-4">status</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        {% for booking in bookings %}
+        <tr class="border-b border-gray-300 text-center">
+          <td class="p-2 text-center">{{booking.wastetype}}</td>
+          <td class="p-1 text-center">{{booking.date}}</td>
+          <td class="p-1 text-center">{{booking.booking_status}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
