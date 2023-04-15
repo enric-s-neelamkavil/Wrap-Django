@@ -1,0 +1,33 @@
+{% extends 'employee/pending-pickups.html' %} {% block employeestyle %} {% endblock %}
+ {% block employeetitle %}Glass{% endblock %}
+    {% block employeecontent %}
+  <div class="user-content-wrapper">
+  {% for book in booking %}
+  <button onclick="openPopup('{{book.book_id}}')">
+  <div class="user-content">
+    <h1>{{book.name}}</h1>
+    <p>{{book.address}}</p>
+  </div></button>
+  <div class="form-popup" id={{book.book_id}}>
+  <form action="" class="form-container">
+    {{book.date}}
+    <label for="email"><b>{{book.email}}</b></label>
+    
+    <button type="button" class="btn cancel" onclick="closePopup('{{book.book_id}}')">Close</button>
+  </form>
+</div>
+  {% endfor %}
+</div>
+{% endblock %}
+{% block pickupscript %}
+<script>
+function openPopup(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closePopup(id) {
+  document.getElementById(id).style.display = "none";
+}
+</script>
+
+{% endblock %}
