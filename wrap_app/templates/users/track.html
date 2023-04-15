@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block style %}
+<link rel="stylesheet" href="../../static/css/track.css" />
+{% endblock %} {% block title %} Track{% endblock %} {% block content %}
+<div class="track">
+    <div class="map">
+  <div >{{m |safe}}</div></div>
+  <h1 style="color: #009743; font-weight: 500; font-size: 25px">History</h1>
+  <div>
+    <table class="track-table">
+      <tr>
+        <td class="data">
+          <p>Waste Picked up</p>
+        </td>
+        <td class="time">
+          <p>Today, 11:00 AM</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="data">
+          <p>Reached Collection Point</p>
+        </td>
+        <td class="time">
+          <p>Today, 04:03 PM</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="data">
+          <p>Sent to Infinite Waste LLC</p>
+        </td>
+        <td class="time">
+          <p>Today, 05:59 PM</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="data">
+          <p>On the way</p>
+        </td>
+        <td class="time">
+          <p>Just Now</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+{% endblock %}

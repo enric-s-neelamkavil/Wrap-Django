@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% block style %}
+<style>
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .edit-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .edit-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit-details-content > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit-details-content > div > h1 {
+    font-weight: 500;
+    font-size: 22px;
+    color: #009743;
+  }
+  .edit-details-content > div > input {
+    width: 100%;
+    height: 20px;
+    justify-content: center;
+    display: flex;
+    margin: 5px auto;
+    padding: 25px 35px;
+    border-radius: 10px;
+    border: 2px solid #009743;
+  }
+
+  .update-button {
+    background-color: #009743;
+    border-radius: 8.19608px;
+    color: white;
+    padding: 5px 30px;
+  }
+</style>
+
+{% endblock %} {% block title %} Edit Profile{% endblock %} {% block content %}
+<form action="{% url 'edit_profile' %}" method="post">
+    {% csrf_token %}
+  <div class="edit-details-wrapper">
+    <div class="edit-details-content">
+      <div>
+        <h1>Change Name</h1>
+        <input type="text" name="new_name" value={{name}} placeholder="Enter Name" />
+      </div>
+      <div>
+        <h1>Change Email</h1>
+        <input type="email" name="new_email" value={{email}} placeholder="Enter Email" />
+      </div>
+      <div>
+        <h1>Change Password</h1>
+        <input
+          type="password"
+          name="old_password"
+          placeholder="Enter Old Password"
+        />
+        <input
+          type="password"
+          name="new_password"
+          placeholder="Enter New Password"
+        />
+        <input
+          type="password"
+          name="new1_password"
+          placeholder="Confirm New Password"
+        />
+      </div>
+    </div>
+    <a href="{% url 'profile' %}" class="update-button" >
+      <input type="submit" name="submit" value="Update"
+    /></a>
+  </div>
+</form>
+{% endblock %}

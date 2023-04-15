@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% block style %}
+<style>
+  #map {
+    height: 100%;
+  }
+
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .custom-map-control-button {
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    padding: 0 0.5em;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
+    height: 40px;
+    cursor: pointer;
+  }
+  .custom-map-control-button:hover {
+    background: rgb(235, 235, 235);
+  }
+
+  .add-button {
+    border-radius: 50%;
+  }
+</style>
+{% endblock %} {% block title %}Add Adddress{% endblock %} {% block content %}
+<form
+  class="bg-gray-100 p-4 flex flex-col justify-center items-center gap-2"
+  action="{% url 'add_address' %}"
+  method="post"
+>
+  {% csrf_token %}
+  <h1 class="text-[#009743] text-xl font-semibold">Saved addresses</h1>
+  <div class="w-full flex gap-4">
+    <div class="bg-white p-4 rounded-3xl shadow-2xl h-48 w-48">
+      <h1 class="text-[#009743]">Add Address Manually</h1>
+      <div
+        class="flex flex-col items-center justify-center h-full w-full -mt-4"
+      >
+        <div
+          class="h-16 w-16 bg-[#009743] flex items-center justify-center text-white text-3xl add-button"
+        >
+          +
+        </div>
+      </div>
+    </div>
+    <div class="bg-white p-4 h-48 w-48 rounded-3xl shadow-2xl">
+      <h1 class="text-[#009743]">Home Address</h1>
+      <p>
+        Neelamkavil House,<br />
+        Near R C Church,<br />
+        Pavaratty P. O<br />
+        680507
+      </p>
+    </div>
+  </div>
+  <div>
+    <h1 class="text-[#009743]">Pick your current location as address</h1>
+    <button 
+      class="text-center text-white bg-[#009743] px-2 py-4 rounded-xl"
+      onclick="getLocation()"
+    >
+      Get my current location
+    </button>
+    
+  </div>
+  <input type="submit" value="Submit" name="submit">
+</a>
+{% endblock %} 

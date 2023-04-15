@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block style %}
+<style>
+  .update-button {
+    background-color: #009743;
+    border-radius: 8.19608px;
+    color: white;
+    padding: 5px 30px;
+    position: fixed;
+    bottom: 15%;
+  }
+</style>
+{% endblock %} {% block title %}
+Report{% endblock %} {% block content %}
+<div
+  style="
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+    "
+  >
+    <img
+      style="width: 96.15px; height: 96px"
+      src="../../../../static/images/dashboard-pages/success-tick.svg"
+    />
+    <p style="font-weight: 500; font-size: 25px">Dump reported</p>
+    <p style="line-height: 0.7; font-weight: 500; font-size: 25px">Successfully</p>
+    <p style=" padding: 10px 40px;text-align: center;">Nearest authorities will be informed and necessary actions wil be taken.</p>
+  </div>
+  <a href="{% url 'dashboard' %}" class="update-button" >
+      <input type="submit" name="submit" value="Go Back"
+    /></a>
+
+  </a>
+</div>
+{% endblock %}
