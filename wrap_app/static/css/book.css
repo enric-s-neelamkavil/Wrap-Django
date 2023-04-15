@@ -1,0 +1,103 @@
+.booking {
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 40rem;
+}
+.heading-bookings {
+  font-weight: 500;
+  font-size: 25px;
+  color: #009743;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.your-schedule {
+
+  display: flex;
+  flex-direction: column;
+  background: #fcfcfc;
+  /* box-shadow: -2px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 22px;
+  padding: 20px 20px; */
+  /* justify-content: left; */
+  /* width: 70%; */
+  gap: 5px;
+  min-width: 270px;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 28rem;
+}
+
+.your-schedule-left {
+  width: 68px;
+  height: 78px;
+  border: 2px solid #009743;
+  filter: drop-shadow(0px 28px 71px rgba(0, 0, 0, 0.1));
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.your-schedule-right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.your-schedule-right > p {
+  font-size: 12px;
+}
+
+.past-booking {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.past-booking-table-head{
+  display: flex;
+  justify-content: space-between;
+}
+tbody {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+}
+
+thead > tr {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+tbody > tr {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+th {
+  padding: 5px;
+  font-weight: 400;
+  font-size: 13.4353px;
+}
+
+td {
+  padding: 0px 12px;
+  font-weight: 400;
+  font-size: 13.4353px;
+}

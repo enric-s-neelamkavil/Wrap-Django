@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins";
+}
+.signup-header {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -65px;
+}
+.signup-header > h3 {
+  color: #009743;
+  margin-bottom: -15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.signup-header >p {
+  font-size: 20px;
+  font-weight: 400;
+}
+.signup ,.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+img{
+  margin-bottom: -40px;
+}
+label {
+  color: #fff;
+  justify-content: center;
+  display: flex;
+  font-weight: bold;
+  cursor: pointer;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input {
+  width: 255px;
+  height: 20px;
+  justify-content: center;
+  display: flex;
+  margin: 5px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #009743;
+}

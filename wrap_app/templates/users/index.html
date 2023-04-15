@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wrap home page</title>
+
+</head>
+
+<body >
+<div class="container-fluid header text-center ">
+  <h1 style="color: black;font-weight: 700;">Wrap</h1>
+  <h3 style="color: black;font-weight: 600;"> <i>Welcome {{ name }} </i></h3>
+   <div class="my-block">
+            <a href="{% url 'user_logout' %}"><button class="button" ><span>LOGOUT</span></button></a>
+     </div>
+  <span style="font-size:24px">{{ status }}</span>
+</div>
+
+</body>
+</html>

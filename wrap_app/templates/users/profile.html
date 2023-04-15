@@ -1,0 +1,116 @@
+{% extends 'base.html' %} {% block style %}
+<link rel="stylesheet" href="../../static/css/profile.css" />
+{% endblock %} {% block title %} Profile{% endblock %} {% block content %}
+<div class="profile-wrapper">
+  <!-- <h1>Profile Settings</h1> -->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="details-wrapper">
+      <div class="username">
+        <h1>{{my_dict.name}}</h1>
+        <p>({{my_dict.occupation}})</p>
+      </div>
+
+      <p>{{ my_dict.email }}</p>
+    </div>
+    {% if occupation == "User" %}
+    <div class="coins-wrapper">
+      <img src="../../static/images/WRAPCOIN-green.svg" alt="" />
+      <h1>{{my_dict.coins}}</h1>
+    </div>
+    {% endif %}
+  </form>
+  <div class="my-block">
+    <a href="{% url 'edit_profile' %}"
+      ><div class="profile-button-div">
+        <div class="profile-button-left">
+          <img
+            src="../../static/images/profile-page/edit-profile-logo.svg"
+            alt=""
+          />
+          <h1>Edit Profile</h1>
+        </div>
+        <div>
+          <img
+            src="../../static/images/profile-page/right-arrow-grey.svg"
+            alt=""
+          />
+        </div>
+      </div> </a
+    >
+    {% if occupation == "User" %}
+    <a href="{% url 'add_address' %}"
+      ><div class="profile-button-div">
+        <div class="profile-button-left">
+          <img
+            src="../../static/images/profile-page/edit-profile-logo.svg"
+            alt=""
+          />
+          <h1>Add Address</h1>
+        </div>
+        <div>
+          <img
+            src="../../static/images/profile-page/right-arrow-grey.svg"
+            alt=""
+          />
+        </div>
+      </div> </a
+    >
+    {% endif %}
+    <a href="{% url 'contact_us' %}"
+      ><div class="profile-button-div">
+        <div class="profile-button-left">
+          <img src="../../static/images/profile-page/contact-logo.svg" alt="" />
+          <h1>Contact Us</h1>
+        </div>
+        <div>
+          <img
+            src="../../static/images/profile-page/right-arrow-grey.svg"
+            alt=""
+          />
+        </div>
+      </div> </a
+    ><a href="{% url 'support_profile' %}"
+      ><div class="profile-button-div">
+        <div class="profile-button-left">
+          <img src="../../static/images/profile-page/support-logo.svg" alt="" />
+          <h1>Support</h1>
+        </div>
+        <div>
+          <img
+            src="../../static/images/profile-page/right-arrow-grey.svg"
+            alt=""
+          />
+        </div>
+      </div> </a
+    ><a href="{% url 'delete_user' %}"
+      ><div class="profile-button-div">
+        <div class="profile-button-left">
+          <img src="../../static/images/profile-page/delete-logo.svg" alt="" />
+          <h1>Delete Account</h1>
+        </div>
+        <div>
+          <img
+            src="../../static/images/profile-page/right-arrow-grey.svg"
+            alt=""
+          />
+        </div>
+      </div>
+    </a>
+    <a href="{% url 'user_logout' %}"
+      ><div class="profile-button-div">
+        <div class="profile-button-left">
+          <img src="../../static/images/profile-page/logout.svg" alt="" />
+          <h1 style="color: red">LogOut</h1>
+        </div>
+        <div>
+          <img
+            src="../../static/images/profile-page/right-arrow-red.svg"
+            alt=""
+          />
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}
