@@ -1,0 +1,85 @@
+{% extends 'base-employee.html' %} {% block style %}
+<style>
+  .contact-us-wrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .message-content > input {
+    width: 80vw;
+    height: 50px;
+    display: flex;
+    margin: 5px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #009743;
+  }
+
+  .input-message > ::placeholder {
+    top: -10;
+  }
+  .message-content{
+    margin-top: -40px;
+  }
+  .message-content > textarea {
+    width: 80vw;
+    height: 170px;
+    display: flex;
+    margin: 5px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #009743;
+  }
+  #message input,
+  #message textarea {
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+  }
+
+  #message li input[type="text"],
+  #message li textarea {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: none;
+  }
+
+  #message li textarea {
+    height: 150px;
+    resize: none;
+  }
+
+  .send-button {
+    background-color: #009743;
+    border-radius: 8.19608px;
+    color: white;
+    padding: 6px 40px;
+  }
+</style>
+{% endblock %} {% block title %}Contact Us{% endblock %} {% block content %}
+<div class="contact-us-wrapper">
+  <h1 style="color: #009743; font-weight: 500; font-size: 25px">
+    Send Message
+  </h1>
+  <div>
+    <img
+      style="display: flex; margin-top: -80px"
+      src="../../../static/images/logsig.png"
+      alt=""
+    />
+  </div>
+  <div class="message-content">
+    <input type="text" placeholder="Name" />
+    <input type="email" placeholder="Email" />
+    <textarea placeholder="Message"></textarea>
+  </div>
+  <a href="" class="send-button">
+    <input  type="submit" name="submit" value="Send" />
+  </a>
+</div>
+{% endblock %}
