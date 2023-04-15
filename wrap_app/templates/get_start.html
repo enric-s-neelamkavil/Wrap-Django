@@ -35,8 +35,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-top-left-radius: 30%;
-        border-top-right-radius: 30%;
+        border-top-left-radius: 46%;
+        border-top-right-radius: 46%;
       }
       a {
         padding: 10px;
@@ -63,12 +63,26 @@
         border-bottom-right-radius: 100px;
       "
     ></div>
-    <div class="image">
+    <div
+      class="image"
+      style="
+        position: fixed;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        bottom: 70%;
+      "
+    >
       <img src="../static/images/logo-green.svg" alt="" />
       <p>Creating a cleaner</p>
       <p>tomorrow.</p>
     </div>
-    <div style="bottom: 0;">
+
+    <div
+      style="bottom: 0; position: fixed; width: 130vw;display: flex;
+        align-self: center;
+        justify-self: center;"
+    >
       <div class="get-start-bottom">
         <a href="{% url 'select_occupation' %}">Get start!</a>
       </div>

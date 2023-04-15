@@ -1,0 +1,135 @@
+{% extends 'base-employee.html' %} {% block style %}
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    height: 100vh;
+    width: 100%;
+  }
+  .routeway-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .booked-containers {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 5px 20px;
+    width: 358px;
+    height: 84px;
+    background: #d2edff;
+    box-shadow: -2px 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 22.8822px;
+  }
+  .booked-containers > h1 {
+    font-weight: 600;
+    font-size: 21.7801px;
+  }
+  .radio-button-wrapper-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: scroll; */
+    width: 100vw;
+    overflow: auto;
+    padding: 0px 10px;
+  }
+
+  .radio-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* overflow: scroll; */
+    overflow-x: auto;
+    gap: 10px;
+  }
+  .radio-button {
+    border-radius: 23px;
+    width: fit-content;
+    min-width: 160px;
+    height: 43px;
+    padding: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 20px;
+    color: white;
+  }
+  .booking-content-wrapper{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 14rem;
+    gap: 5px;
+  }
+</style>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+  crossorigin=""
+/>
+<script
+  src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+  crossorigin=""
+></script>
+{% endblock %} {% block title %}Routeway{% endblock %} {% block content %}
+<div class="routeway-wrapper">
+  <div class="radio-button-wrapper-body">
+    <div class="radio-button-wrapper">
+      <a href="{% url 'paper_routeway' %}">
+        <div class="radio-button" style="background-color: #f7931a">
+          <img src="../../static/images/Schedule-logos-1.svg" alt="" />
+          <p>Paper</p>
+        </div></a
+      >
+      <a href="{% url 'biowaste_routeway' %}">
+        <div class="radio-button" style="background-color: #009743">
+          <img src="../../static/images/Schedule-logos-2.svg" alt="" />
+          <p>Bio waste</p>
+        </div></a
+      >
+      <a href="{% url 'plastic_routeway' %}">
+        <div class="radio-button" style="background-color: #1877f2">
+          <img src="../../static/images/Schedule-logos-3.svg" alt="" />
+          <p>Plastic</p>
+        </div></a
+      >
+      <a href="{% url 'glass_routeway' %}">
+        <div class="radio-button" style="background-color: #eb4335">
+          <img src="../../static/images/Schedule-logos-4.svg" alt="" />
+          <p>Glass</p>
+        </div></a
+      >
+      <a href="{% url 'ewaste_routeway' %}">
+        <div class="radio-button" style="background-color: #bd00ff">
+          <img src="../../static/images/Schedule-logos-5.svg" alt="" />
+          <p>E-Waste</p>
+        </div></a
+      >
+      <a href="{% url 'others_routeway' %}">
+        <div class="radio-button" style="background-color: #8e8e8e">
+          <img src="../../static/images/Schedule-logos-6.svg" alt="" />
+          <p>Others</p>
+        </div></a
+      >
+    </div>
+  </div>
+  <h1 style="font-weight: 600; font-size: 21.7801px">
+    {% block titleroute %}plastic{% endblock %}
+  </h1>
+  <div style="width: 357px; height: 364px; border-radius: 20px" id="map"></div>
+  <div class="booking-content-wrapper">
+  {% block routewaycontent %} {% endblock %}
+  </div>
+</div>
+{% endblock %} {% block script %} {% block routewayscript %} {% endblock %} {% endblock %}

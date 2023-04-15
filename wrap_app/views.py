@@ -226,7 +226,7 @@ def track(request):
 
         ]
         folium.PolyLine(trail_coordinates, tooltip="Coast",color="darkred").add_to(m)
-        m = m.repr_html()
+        m = m._repr_html_()
         return render(request,'users/track.html',{ "m": m})
     else:
         data = {'status':'You need to login first'}
@@ -416,12 +416,41 @@ def delete_user(request):
     
 def add_address(request):
     if 'uname' in request.session:
-        if request.method == 'POST':
+        latitude = 'null'
+        longitude = 'null'
+        user = User.objects.get(name=request.session['uname'])
+        adr = AddressUser.objects.filter(uid=user.uid)
+        if request.method == 'POST':  
+            longitude = request.POST.get('longitude')
+            latitude = request.POST.get('latitude')
+            address_title = request.POST.get('address_title')
+            address_content = request.POST.get('address_content')
             g = geocoder.ip('me')
             latitude = g.lat
             longitude = g.lng
-            print(longitude,latitude)
-        return render(request,'users/profile/add-address.html')
+            print(longitude,latitude,address_content,address_title)
+            print(adr)
+            adrs = AddressUser(uid=user.uid,email=user.email,name=user.name,address_title=address_title,address_content=address_content,latitude=latitude,longitude=longitude)
+            print(adrs)
+            adrs.save()
+            # return render(request,'users/profile/add-address.html',{'lat':latitude,'log':longitude})
+            return redirect('add_address')
+        return render(request,'users/profile/add-address.html',{'lat':latitude,'log':longitude,'adr':adr})
+    else:
+        data = {'status':'You need to login first'}
+        return render(request,'signin.html',context=data)
+def delete_address(request):
+    if 'uname' in request.session:
+        user = User.objects.get(name=request.session['uname'])
+        if request.method == 'POST':  
+            address_title = request.POST.get('address_title')
+            address_content = request.POST.get('address_content')
+            aid = request.POST.get('aid')
+            adr = AddressUser.objects.filter(aid=aid)
+            print(adr)
+            adr.delete()
+            return redirect('add_address')
+        return render(request,'users/profile/add-address.html',{'adr':adr})
     else:
         data = {'status':'You need to login first'}
         return render(request,'signin.html',context=data)

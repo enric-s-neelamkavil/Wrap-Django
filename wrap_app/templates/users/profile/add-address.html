@@ -29,52 +29,97 @@
   .custom-map-control-button:hover {
     background: rgb(235, 235, 235);
   }
+  .address-display-div {
+    overflow: scroll;
+    overflow-x: auto;
+    width: 100vw;
+  }
+  .address-display-div > div {
+    width: 500px;
+  }
 
   .add-button {
     border-radius: 50%;
   }
+  input {
+    width: 300px;
+    height: 40px;
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #009743;
+  }
 </style>
 {% endblock %} {% block title %}Add Adddress{% endblock %} {% block content %}
-<form
+<div class="bg-gray-100 p-4 flex flex-col justify-center items-center gap-2">
+  <h1 class="text-[#009743] text-xl font-semibold">Saved addresses</h1>
+  <div class="flex gap-4 address-display-div">
+    {% for adrs in adr %}
+    <div class="bg-white p-4 rounded-3xl shadow-2xl">
+      <h1 class="text-[#009743]">{{adrs.address_title}}</h1>
+      <p>{{adrs.address_content}}</p>
+      <p>Latitude : {{adrs.latitude}}</p>
+      <p>Longitude : {{adrs.longitude}}</p>
+      <form action="{% url 'delete_address' %}" method="post">
+        {% csrf_token %}
+        
+        <input
+          type="hidden"
+          name="address_title"
+          value="{{adrs.address_title}}"
+        />
+        <input
+          type="hidden"
+          name="address_content"
+          value="{{adrs.address_content}}"
+        />
+        <input type="hidden" name="aid" value="{{adrs.aid}}" />
+        <button class="bg-red-100 w-8 h-8 flex">
+          <img
+            src="../../../static/images/profile-page/delete-logo.svg"
+            alt=""
+          />
+        </button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+  <form
   class="bg-gray-100 p-4 flex flex-col justify-center items-center gap-2"
   action="{% url 'add_address' %}"
   method="post"
 >
   {% csrf_token %}
-  <h1 class="text-[#009743] text-xl font-semibold">Saved addresses</h1>
-  <div class="w-full flex gap-4">
-    <div class="bg-white p-4 rounded-3xl shadow-2xl h-48 w-48">
-      <h1 class="text-[#009743]">Add Address Manually</h1>
-      <div
-        class="flex flex-col items-center justify-center h-full w-full -mt-4"
-      >
-        <div
-          class="h-16 w-16 bg-[#009743] flex items-center justify-center text-white text-3xl add-button"
-        >
-          +
-        </div>
-      </div>
-    </div>
-    <div class="bg-white p-4 h-48 w-48 rounded-3xl shadow-2xl">
-      <h1 class="text-[#009743]">Home Address</h1>
-      <p>
-        Neelamkavil House,<br />
-        Near R C Church,<br />
-        Pavaratty P. O<br />
-        680507
-      </p>
-    </div>
-  </div>
-  <div>
+  <div class="flex flex-col gap-2">
     <h1 class="text-[#009743]">Pick your current location as address</h1>
-    <button 
+    <!-- <button
       class="text-center text-white bg-[#009743] px-2 py-4 rounded-xl"
       onclick="getLocation()"
     >
       Get my current location
-    </button>
-    
+    </button> -->
+    <div>
+      <p>Current Coordinates are</p>
+      <h3>X: {{lat}}</h3>
+      <h3>Y: {{log}}</h3>
+    </div>
+    <input type="hidden" name="longitude" value="{{log}}" required />
+    <input type="hidden" name="latitude" value="{{lat}}" required />
+    <input
+      type="text"
+      name="address_title"
+      placeholder="Enter Location Title"
+      required
+    />
+    <input
+      type="text"
+      name="address_content"
+      placeholder="Enter your current address"
+      required
+    />
   </div>
-  <input type="submit" value="Submit" name="submit">
-</a>
-{% endblock %} 
+  <input type="submit" value="Submit" name="submit" />
+</form>
+{% endblock %}

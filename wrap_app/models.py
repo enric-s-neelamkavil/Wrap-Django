@@ -57,6 +57,7 @@ class Redeem(models.Model) :
     amount = models.IntegerField()
 
 class AddressUser(models.Model) :
+    aid = models.AutoField(primary_key=True)
     email = models.EmailField()
     uid = models.IntegerField()
     name = models.CharField(max_length=20,default='null')
