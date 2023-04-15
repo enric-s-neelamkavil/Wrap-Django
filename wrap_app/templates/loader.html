@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loader Page</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .loader {
+        background-color: #009743;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .loader > img {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader">
+      <img src="../static/images/logo-light.svg" alt="" />
+    </div>
+    <script>
+      setTimeout(function () {
+        window.location.href = "{% url 'get_start' %}";
+      }, 2000);
+    </script>
+  </body>
+</html>

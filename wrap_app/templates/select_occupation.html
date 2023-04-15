@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        height: 100vh;
+      }
+      .image {
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        font-size: 22px;
+        font-weight: 500;
+      }
+      .get-start-bottom {
+        background: #87c9a5;
+        width: 100vw;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        bottom: 0;
+      }
+
+      .occupation-select-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+      }
+      a {
+        padding: 10px;
+        height: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #009743;
+      }
+
+      .div-occupation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        color: #009743;
+      }
+
+      label{
+        display: flex;
+        background-color: #80CBA1;
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        align-items: center;
+        justify-content: center;
+
+      }
+      form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+      }
+      .icon-wrapper{
+        border-radius: 50%;
+      }
+
+      .icon{
+        width: 40px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        background-color: #009743;
+        opacity: 50%;
+        width: 100vw;
+        height: 50px;
+        border-bottom-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+      "
+    ></div>
+    <div class="occupation-select-wrapper">
+      <div class="image">
+        <img src="../static/images/logo-green.svg" alt="" />
+        <p>Creating a cleaner</p>
+        <p>tomorrow.</p>
+      </div>
+      <div>
+        <img style="height: 170px;margin-bottom: 20px;" src="../static/images/dashboard-pick.svg" alt="" />
+      </div>
+      <form class="" action="{% url 'signup' %}" method="get">
+        <div class="div-occupation">
+          <input
+            id="User"
+            type="submit"
+            name="occupation"
+            value="User"
+            class="hidden"
+          />
+          <label
+            for="User"
+            class=" peer-checked:border-blue-600"
+          >
+            <div
+              class=" shadow-sm gap-2"
+            >
+              <img
+                class="icon"
+                src="../static/images/user-profile-icon.svg"
+                alt="img1"
+              />
+            </div>
+        
+          </label>
+            <h1 class="text-green leading-none text-sm text-center">User</h1>
+
+        </div>
+        <div class="div-occupation">
+          <input
+            id="Employee"
+            type="submit"
+            name="occupation"
+            value="Employee"
+            class="hidden"
+          />
+          <label
+            for="Employee"
+            class=" peer-checked:border-blue-600"
+          >
+            <div
+              class=" "
+            >
+              <img
+                class="icon"
+                src="../static/images/employee-icon.svg"
+                alt="img1"
+              />
+            </div>
+            
+          </label>
+            <h1 class="">Employee</h1>
+
+        </div>
+        <div class="div-occupation">
+          <input
+            id="Company"
+            type="submit"
+            name="occupation"
+            value="Company"
+            class="hidden"
+          />
+          <label
+            for="Company"
+            class=" peer-checked:border-blue-600"
+          >
+            <div
+              class="icon-wrapper "
+            >
+              <img
+                class="icon"
+                src="../static/images/company-icon.svg"
+                alt="img1"
+              />
+            </div>
+          </label>
+            <h1 class="">Company</h1>
+
+        </div>
+      </form>
+      <div>
+        <p style="font-size: 12px;display: flex;">
+          Already Registered? <a href="{% url 'signin' %}">Continue to Login</a>
+        </p>
+      </div>
+    <!-- <div >
+      <div class="get-start-bottom">
+        <a href="{% url 'select_occupation' %}">Get start!</a>
+      </div>
+    </div> -->
+  </body>
+</html>
