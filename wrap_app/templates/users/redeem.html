@@ -1,0 +1,128 @@
+{% extends 'base.html' %} {% block style %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+  *{
+     font-family: "Poppins";
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .trending-wrapper,
+  .ongoing-offer-wrapper {
+    height: 320px;
+    width: 100vw;
+    padding: 0px 20px;
+  }
+  .trending-wrapper > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .trending-wrapper > div > h1,
+  .ongoing-offer-wrapper > h1 {
+    font-weight: 500;
+    font-size: 25px;
+    color: #009743;
+  }
+  .coins-wrapper {
+    display: flex;
+    color: #009743;
+    border: 3px solid #009743;
+    width: fit-content;
+    padding: 5px 15px;
+    gap: 5px;
+    border-radius: 8px;
+    background-color: #eaf6ed;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .trending-cards {
+    background: #ffffff;
+    box-shadow: -2px 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    height: 230px;
+  }
+
+  .image-redeems {
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+  }
+
+  .trending-cards > p {
+    font-weight: 500;
+    font-size: 12px;
+    padding: 5px;
+  }
+</style>
+
+{% endblock %} {% block title %} Redeem{% endblock %} {% block content %}
+<form action="{% url 'redeem' %}" method="post">
+  {% csrf_token %}
+  <div class="trending-wrapper">
+    <div>
+      <h1>Trending Now</h1>
+      <div class="coins-wrapper">
+        <img src="../../static/images/WRAPCOIN-green.svg" alt="" />
+        <h1>{{my_dict.coins}}</h1>
+      </div>
+    </div>
+    <div
+      style="
+        width: auto;
+        overflow: scroll;
+        overflow-x: auto;
+        display: flex;
+        justify-content: flex-start;
+        padding: 4px 0px;
+        gap: 15px;
+      "
+    >
+      {% for redeem in redeem %} {% if redeem.order_type == 'trending' %}
+      <label class="trending-cards w-[180px]">
+        <div class="w-[100px] h-[100px]">
+        <img class="image-redeems w-[100%] h-[100%]" src="../../../{{redeem.photo}}" /></div>
+        <p >{{redeem.description}}</p>
+        <div style="display: flex; color: #009743;gap: 5px;">
+          <img src="../../static/images/WRAPCOIN-green.svg" alt="" />
+          <h1 style="font-weight: 600; font-size: 23px">{{redeem.amount}}</h1>
+        </div>
+      </label>
+      {% endif %} {% endfor %}
+    </div>
+  </div>
+  <div class="ongoing-offer-wrapper">
+    <h1>Ongoing Offers</h1>
+    <div
+      style="
+        width: auto;
+        overflow: scroll;
+        overflow-x: auto;
+        display: flex;
+        gap: 15px;
+        padding: 4px 0px;
+      "
+    >
+      {% for redeem in redeem %} {% if redeem.order_type == 'ongoing' %}
+      <label class="trending-cards w-[180px]">
+        <div class="w-[100px] h-[100px]">
+        <img class="image-redeems w-[100%] h-[100%]" src="../../../{{redeem.photo}}" /></div>
+        <p>{{redeem.description}}</p>
+        <div style="display: flex; color: #009743;gap: 5px;">
+          <img src="../../static/images/WRAPCOIN-green.svg" alt="" />
+          <h1 style="font-weight: 600; font-size: 23px">{{redeem.amount}}</h1>
+        </div>
+      </label>
+      {% endif %} {% endfor %}
+    </div>
+  </div>
+</form>
+{% endblock %}
