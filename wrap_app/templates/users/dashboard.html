@@ -1,6 +1,146 @@
 {% extends 'base.html' %} 
 {% block style %} 
 <link rel="stylesheet" href="../../static/css/dashboard.css">
+<style>
+
+  a {
+    text-decoration: none;
+  }
+  
+  a > div > h3 {
+    color: #009743;
+  }
+  
+  a > div > p {
+    color: black;
+  }
+  
+  .dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .schedule-pickup {
+    background-color: #009743;
+    width: 90%;
+    padding: 10px 10px 20px 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  @media all and (max-width: 380px) {
+    .schedule-pickup {
+      height: 250px;
+    }
+    .schedule-pickup > div > div > h2 {
+      font-size: 18px;
+    }
+    .schedule-pickup > div > div > h3 {
+      font-size: 18px;
+    }
+  }
+  
+  .schedule-pickup-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 0px 20px;
+  }
+  
+  .schedule-pickup-box-text > h2 {
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .schedule-pickup-box-text > p {
+    font-size: 12px;
+  }
+  
+  .schedule-pickup-link > a {
+    background-color: white;
+    display: flex;
+    border-radius: 20px;
+    padding: 10px;
+    flex-direction: row;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .schedule-pickup-link-text > h3 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .schedule-pickup-link-text > p {
+    font-size: 11px;
+  }
+  
+  .drop-report-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .dropoff {
+    background-color: rgba(1, 152, 68, 0.3);
+    border-radius: 13px;
+    padding: 15px;
+    display: flex;
+    width: 130px;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    margin: 0;
+  }
+  
+  .dropoff > img {
+    width: 40px;
+  }
+  
+  .wrap-bin {
+    /* display: grid;
+    grid-template-columns: repeat(1fr,3); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .wrap-bin > p {
+    color: #009743;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .wrap-bin-button-wrapper {
+  display: flex;
+  gap: 10px;
+  }
+  
+  .wrap-bin-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    width: 110px;
+    background: white;
+    box-shadow: -2px 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    gap: 8px;
+  }
+
+</style>
 {% endblock %}
 {% block title %} Dashboard{% endblock %}
 {% block content %}
