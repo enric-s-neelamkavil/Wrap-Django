@@ -1,93 +1,9 @@
-{% extends 'base.html' %} {% block style %}
-<link rel="stylesheet" href="../../static/css/track.css" />
-<style>
-    .scan-wrapper {
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        margin: 0%;
-        padding: 0%;
-        background-image: url('../../static/images/scan/scan-image.jpg');
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 143.66%);
-    }
-
-    .scan-wrapper>div>img {
-        width: 100vw;
-        height: 100vh;
-    }
-
-    .foreground-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, #000000 143.66%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10vw 0vw;
-        gap: 7vw;
-    }
-
-    .foreground-image>:nth-child(1) {
-        height: 73vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .scan-buttons {
-        display: flex;
-        gap: 10px;
-    }
-
-    .scan-buttons>button {
-        width: fit-content;
-        height: fit-content;
-        border-radius: 4vw;
-        padding: 4vw 12vw;
-        border: none;
-        font-size: 22px;
-    }
-
-    .scan-buttons>:nth-child(1) {
-        background: #009743;
-        color: white;
-    }
-
-    .scan-buttons>:nth-child(2) {
-        background: white;
-        color: #009743;
-    }
-</style>
-{% endblock %} {% block content %}
-<div class="scan-wrapper">
-    <div style="position: relative; width: 100vw;
-    height: 100vh;">
-        <img src="../../static/images/scan/scan-image.jpg" alt="">
-        <div class="foreground-image">
-            <div>
-                <img src="../../static/images/scan/scan-black-border.png" alt="">
-                <img src="../../static/images/scan/scan-white-border.png" alt="">
-            </div>
-            <div class="scan-buttons">
-                <button type="button" onclick="init()">Snap</button>
-                <button>Next</button>
-
-            </div>
-            <div id="webcam-container"></div>
-            <div id="label-container"></div>
-        </div>
-    </div>
-</div>
-{% endblock %}
-
-
-
-{% block script %}
+<html>
+    <body>
+<div>Teachable Machine Image Model</div>
+<button type="button" onclick="init()">Start</button>
+<div id="webcam-container"></div>
+<div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
@@ -143,6 +59,5 @@
         }
     }
 </script>
-
-
-{% endblock %}
+</body>
+</html>

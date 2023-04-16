@@ -1,6 +1,6 @@
 from .views import signup,admin_home,get_start,select_occupation,loader,login_admin,signin,user_logout,admin_logout
-from .views import track,booking,rewards,dashboard,redeem
-from .views import report,pickup,purchase,dropoff
+from .views import track,booking,rewards,dashboard,redeem,tensorflow_scan
+from .views import report,pickup,purchase,dropoff,delete_booking
 from .views import profile,notification,edit_profile,delete_user,support_profile,contact_us,add_address,delete_address
 from .views import dashboard_employee,pending_pickups,employee_profile
 from .views import plastic_pickup,paper_pickup,biowaste_pickup,glass_pickup,ewaste_pickup,others_pickup
@@ -25,11 +25,14 @@ urlpatterns = [
     path('rewards/',rewards,name='rewards'),
     path('track/',track,name='track'),
     path('redeem/',redeem,name='redeem'),
+    path('tensorflow_scan/',tensorflow_scan,name="tensorflow_scan"),
     
     path('dropoff/',dropoff,name='dropoff'),
     path('pickup/',pickup,name='pickup'),
     path('purchase/',purchase,name='purchase'),
     path('report/',report,name='report'),
+    path("delete_booking/",delete_booking,name='delete_booking'),
+
 
     path('profile/',profile,name='profile'),
     path('notification/',notification,name='notification'),

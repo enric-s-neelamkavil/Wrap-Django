@@ -19,12 +19,15 @@
     {% endwith %}
   </div> -->
   <div class="your-schedule">
-    {% for booking in bookings %} {% if booking.count == 0 %}
-    <div></div>
+    {% if count == 0 %}
 
-    {% endif %} {% if booking.booking_status == "Booked" %}
-    <div
-      style="
+    <p class="text-center justify-center">Schedule a pickup first.</p>
+
+
+    {% endif %}
+    {% for booking in bookings %}
+    {% if booking.booking_status == "Booked" %}
+    <div style="
         height: fit-content;
         display: flex;
         background: #fcfcfc;
@@ -35,8 +38,7 @@
         width: 70%;
         gap: 25px;
         min-width: 280px;
-      "
-    >
+      ">
       <div class="your-schedule-left">
         <h4>{{ booking.month}}</h4>
         <h3>{{ booking.date1}}</h3>
@@ -45,6 +47,13 @@
         <h3>{{booking.wastetype}}</h3>
         <p>Status :{{booking.booking_status}}</p>
       </div>
+      <form action="{% url 'delete_booking' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="book_id" value={{booking.book_id}}>
+        <button>
+          <img src="../../static/images/profile-page/delete-logo.svg" alt="">
+        </button>
+      </form>
     </div>
     {% endif %} {% endfor %}
   </div>
