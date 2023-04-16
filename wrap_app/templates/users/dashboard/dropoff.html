@@ -322,19 +322,35 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-3">
-        <h1 class="font-semibold text-xl">3.Drop Off Point</h1>
-        <div class="">
-          <select
-            class="form-select w-full bg-no-repeat transition ease-in-out bg-white-600 shadow-md rounded-xl p-4"
-            aria-label="Default select example"
-          >
-            <option selected name="booking_address">Select the nearest Dropoff point</option>
-            <option name="booking_address" value="1">One</option>
-            <option name="booking_address" value="2">Two</option>
-            <option name="booking_address" value="3">Three</option>
-          </select>
-        </div>
+      <div class="flex gap-4">
+        <ul class="w-full md:grid-cols-2 flex items-center justify-center flex-wrap">
+          {% for adrs in adr %}
+
+          <li>
+            <input type="radio" id={{adrs.aid}} name="booking_address_title" value={{adrs.address_title}} class="hidden peer"
+              required>
+            <label for={{adrs.aid}}
+              class="inline-flex items-center justify-between bg-white border-[3px] border-white rounded-3xl cursor-pointer peer-checked:border-blue-600">
+              <div class="h-40 bg-white rounded-3xl shadow-lg p-4 mx-2">
+                <h1 class="w-full font-medium text-[#009743] text-lg p-2">{{adrs.address_title}}</h1>
+                <p class="p-2 text-sm">
+                 {{adrs.address_content}}
+                </p>
+                <p>Lat : {{adrs.latitude}}</p>
+                <p>Lat : {{adrs.longitude}}</p>
+                <input type="hidden" name="booking_address" value={{adrs.address_content}}>
+                <input type="hidden" name="booking_latitude" value={{adrs.latitude}}>
+                <input type="hidden" name="booking_longitude" value={{adrs.longitude}}>
+              </div>
+            </label>
+          </li>
+
+          {% endfor %}
+
+          <a href="{% url 'add_address' %}" class="h-40 bg-white rounded-3xl shadow-lg flex flex-col gap-4 items-center justify-center">
+            <img src="../../../static/images/logo-add-address.svg">
+            <h1 class="text-sm px-4 ">Add another address</h1>
+          </a>
       </div>
 
       <a class="mt-0 mx-2" href="#ScheduleSuccess">
